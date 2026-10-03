@@ -1,3 +1,4 @@
+import os
 import matplotlib.pyplot as plt
 
 # Import your pure Python function from your math file
@@ -93,7 +94,12 @@ def plot_vector_add(v1: list[float], v2: list[float]) -> None:
     ax.legend(loc="upper left")
     ax.set_title("3Blue1Brown Perspective: 2D Vector Addition (Tip-to-Tail)")
     
-    # 8. Render figure:
+    # 8. Save and Render figure:
+    # Get the directory where the visualization.py file is located.
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    save_path = os.path.join(script_dir, "assets", "vector_addition.png")
+    plt.savefig(save_path, bbox_inches='tight')
+
     #    - plt.show()
     plt.show()
 
