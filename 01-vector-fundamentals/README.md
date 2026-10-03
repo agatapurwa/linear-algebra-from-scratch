@@ -76,7 +76,7 @@ Matrix Multiply: [[19.0, 22.0], [43.0, 50.0]]
 Run `visualization.py` to display the interactive Matplotlib plot:
 ```bash
 python visualization.py
-
+```
 
 ## 🖼️ Geometric Visualization
 
