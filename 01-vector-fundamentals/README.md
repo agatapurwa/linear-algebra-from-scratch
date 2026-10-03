@@ -74,14 +74,14 @@ Matrix Multiply: [[19.0, 22.0], [43.0, 50.0]]
 ### 2. Render Vector Visualization
 
 Run `visualization.py` to display the interactive Matplotlib plot:
+```bash
+python visualization.py
+
 
 ## 🖼️ Geometric Visualization
 
 Here is the 2D Tip-to-Tail vector addition rendered using Matplotlib:
 
 ![2D Vector Addition](assets/vector_addition.png)
-
-```bash
-python visualization.py
 
 ```
