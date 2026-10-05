@@ -110,4 +110,4 @@ python visualization.py
 
 Here is the 2D Tip-to-Tail linear combination rendered using Matplotlib:
 
-![2D Linear Combination](assets\linear_combination.png)
+![Linear Combination Visualization](assets/linear_combination.png)
