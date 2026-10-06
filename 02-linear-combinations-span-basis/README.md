@@ -90,7 +90,7 @@ python matrix_from_scratch.py
 ```text
 === MATRIX & VECTOR OPERATIONS TEST ===
 Scalar Multiplication (2.0 * [3.0, 1.0]) : [6.0, 2.0]
-Vector Addition ([3.0, 1.0] + [1.0, 2.0])        : [4.0, 3.0]
+Vector Addition ([3.0, 1.0] + [1.0, 2.0]) : [4.0, 3.0]
 Linear Combination (2.0*v1 + -1.5*v2) : [4.5, -1.0]
 
 ```
