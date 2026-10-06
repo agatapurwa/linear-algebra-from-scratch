@@ -109,6 +109,23 @@ def check_linear_depedance(v1: list[float], v2: list[float]) -> list[float]:
     # 4. Otherwise, return False.
     return abs(det) < 1e-9
 
+def generate_span_sample(v1: list[float], v2: list[float], c_range: list[float]) -> bool:
+   
+    """
+    Generates a set of points representing the linear combination of v1
+    and v2 within the given range of scalars.
+    """
+
+    #PSEUDO-CODE GUIDE:
+    #1. Make empty list
+    span_points= []
+    for c1 in c_range:
+        for c2 in c_range:
+            point= linear_combination([v1, v2], [c1, c2])
+            span_points.append(point)
+
+    return span_points
+        
 if __name__ == "__main__":
     # Test Data
     v1 = [3.0, 1.0]
@@ -123,5 +140,5 @@ if __name__ == "__main__":
     # Print Proofs to Terminal
     print("=== MATRIX & VECTOR OPERATIONS TEST ===")
     print(f"Scalar Multiplication ({c1} * {v1}) : {scaled}")
-    print(f"Vector Addition ({v1} + {v2})        : {added}")
+    print(f"Vector Addition ({v1} + {v2}) : {added}")
     print(f"Linear Combination ({c1}*v1 + {c2}*v2) : {combo}")
