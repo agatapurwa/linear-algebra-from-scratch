@@ -1,16 +1,18 @@
 import math
+import os
 import matplotlib.pyplot as plt
 
-# Import math fanctions form local script
+# Import math functions from local script
 from matrix_from_scratch import (
     get_rotation_matrix_y,
-    matrix_vector_multiply_3d
+    matrix_vector_multiply_3d,
 )
 
-def plot_3d_linear_transformation():
+
+def plot_3d_linear_transformation() -> None:
     """
-    Visualizes 3D basis vector transformation using 
-    Matplotlib mplot3d (3Blue1Brown Style).
+    Visualizes 3D basis vector transformation using
+    Matplotlib mplot3d (3Blue1Brown Style) and saves plot to assets/ folder.
     """
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(projection="3d")
@@ -37,73 +39,25 @@ def plot_3d_linear_transformation():
     ax.plot([0, 0], [0, 0], [-2, 2], color="gray", linestyle="--", alpha=0.5)
 
     # Plot original basis vectors (faint/dashed)
-    ax.quiver(
-        0,
-        0,
-        0,
-        i_hat[0],
-        i_hat[1],
-        i_hat[2],
-        color="red",
-        alpha=0.3,
-        linestyle=":",
-    )
-    ax.quiver(
-        0,
-        0,
-        0,
-        j_hat[0],
-        j_hat[1],
-        j_hat[2],
-        color="green",
-        alpha=0.3,
-        linestyle=":",
-    )
-    ax.quiver(
-        0,
-        0,
-        0,
-        k_hat[0],
-        k_hat[1],
-        k_hat[2],
-        color="cyan",
-        alpha=0.3,
-        linestyle=":",
-    )
+    ax.quiver(0, 0, 0, i_hat[0], i_hat[1], i_hat[2], color="red", alpha=0.3, linestyle=":")
+    ax.quiver(0, 0, 0, j_hat[0], j_hat[1], j_hat[2], color="green", alpha=0.3, linestyle=":")
+    ax.quiver(0, 0, 0, k_hat[0], k_hat[1], k_hat[2], color="cyan", alpha=0.3, linestyle=":")
 
     # Plot transformed basis vectors (solid bold)
     ax.quiver(
-        0,
-        0,
-        0,
-        i_hat_trans[0],
-        i_hat_trans[1],
-        i_hat_trans[2],
-        color="red",
-        linewidth=2.5,
-        label="Transformed i-hat",
+        0, 0, 0,
+        i_hat_trans[0], i_hat_trans[1], i_hat_trans[2],
+        color="red", linewidth=2.5, label="Transformed i-hat"
     )
     ax.quiver(
-        0,
-        0,
-        0,
-        j_hat_trans[0],
-        j_hat_trans[1],
-        j_hat_trans[2],
-        color="green",
-        linewidth=2.5,
-        label="Transformed j-hat",
+        0, 0, 0,
+        j_hat_trans[0], j_hat_trans[1], j_hat_trans[2],
+        color="green", linewidth=2.5, label="Transformed j-hat"
     )
     ax.quiver(
-        0,
-        0,
-        0,
-        k_hat_trans[0],
-        k_hat_trans[1],
-        k_hat_trans[2],
-        color="cyan",
-        linewidth=2.5,
-        label="Transformed k-hat",
+        0, 0, 0,
+        k_hat_trans[0], k_hat_trans[1], k_hat_trans[2],
+        color="cyan", linewidth=2.5, label="Transformed k-hat"
     )
 
     # View limits and labels
@@ -128,6 +82,15 @@ def plot_3d_linear_transformation():
     )
     plt.legend(facecolor="black", labelcolor="white")
     plt.tight_layout()
+
+    # Save generated plot to assets/ directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    assets_dir = os.path.join(script_dir, "assets")
+    os.makedirs(assets_dir, exist_ok=True)
+
+    output_path = os.path.join(assets_dir, "3d_linear_transformation.png")
+    plt.savefig(output_path, facecolor=fig.get_facecolor(), edgecolor="none", bbox_inches="tight")
+
     plt.show()
 
 
