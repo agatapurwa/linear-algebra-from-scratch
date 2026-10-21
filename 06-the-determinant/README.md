@@ -1,6 +1,3 @@
-Ini adalah file **`06-the-determinant/README.md`** versi lengkap yang sudah disesuaikan dengan arsitektur OOP (menggunakan kelas `Matrix` dan properti `@property`) serta mengacu pada file aset `assets/determinant_scaling.png`:
-
-```markdown
 # Module 06: The Determinant & Area Scaling
 
 [![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
