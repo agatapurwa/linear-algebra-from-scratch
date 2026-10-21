@@ -35,15 +35,6 @@ The determinant of a composed transformation equals the product of individual de
 
 $$\det(A \cdot B) = \det(A) \cdot \det(B)$$
 
----
-
-## 🖼️ Geometric Visualization
-
-Below is the geometric visualization demonstrating how a unit square transforms into a parallelogram under matrix $A = \begin{bmatrix} 3.0 & 1.0 \\ 0.0 & 2.0 \end{bmatrix}$, expanding its original area ($1.0$) by a scaling factor of $\det(A) = 6.0$:
-
-![Determinant Area Scaling](assets/determinant_scaling.png)
-
----
 
 ## 📁 Module Structure
 
