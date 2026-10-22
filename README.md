@@ -68,11 +68,11 @@ linear-algebra-from-scratch/
 │   ├── visualization.py
 │   └── README.md
 └── 07-inverse-matrices-column-null-space/
-    ├── assets/
-    │   └── linear_system_inverse.png 
-    ├── matrix_from_scratch.py        
-    ├── visualization.py              
-    └── README.md                     
+│   ├── assets/
+│   │   └── linear_system_inverse.png
+│   ├── matrix_from_scratch.py
+│   ├── visualization.py
+│   └── README.md                    
 ├── .gitignore
 └── README.md
 
