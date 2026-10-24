@@ -23,7 +23,7 @@ This repository intentionally documents a dual-phase software engineering journe
 | **04-matrix-multiplication-composition** | Matrix composition, sequential spatial transformations | Procedural | `matrix_composition.png` | ✅ Complete |
 | **05-three-dimensional-transformations** | 3D basis transformations ($\hat{i}, \hat{j}, \hat{k}$), $3 \times 3$ matrix operations, Y-axis rotation | Procedural | `3d_linear_transformation.png` | ✅ Complete |
 | **06-the-determinant** | Area/volume scaling factor, dimensional collapse ($\det = 0$), orientation flip | OOP (`Matrix` Class) | `determinant_scaling.png` | ✅ Complete |
-| **07-inverse-matrices-column-null-space** | Inverse matrice ($\mathbb{A}^{-1}$), Column space, Null space | OOP (`Matrix` Class) | `linear_system_inverse.png` | 🔄 In Progress |
+| **07-inverse-matrices-column-null-space** | Inverse matrice ($\mathbb{A}^{-1}$), Column space, Null space | OOP (`Matrix` Class) | `linear_system_inverse.png` | ✅ Complete |
 
 ---
 
