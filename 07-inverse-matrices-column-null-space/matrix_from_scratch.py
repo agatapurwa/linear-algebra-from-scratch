@@ -50,7 +50,7 @@ class Matrix:
     @property
     def is_singular(self) -> bool:
         """Checking whether the matrix has undergone dimensional collapse (det = 0)."""
-        raise abs(self.det) < 1e-9
+        return abs(self.det) < 1e-9
 
     @property
     def orientation_status(self) -> str:
@@ -62,8 +62,106 @@ class Matrix:
         return "Orientation Inverted (Space Flipped)"
 
     def inverse(self) -> "Matrix":
-        
+        """Calculates and returns the inverse matrix (A^-1). Raises ValueError if singular."""
+        if self.is_singular:
+            raise ValueError ("Matrix is singular (det = 0) and cannot be inverted.")
 
+        if self.rows == 2:
+            det_val = self.det
+            a, b = self.data[0][0], self.data[0][1]
+            c, d = self.data[1][0], self.data[1][1]
 
+            # Adjugate formula divided by determinant: (1/det) * [[d, -b], [-c, a]]
+            inv_data = [
+                [d / det_val, -b / det_val],
+                [-c / det_val, a / det_val],
+            ]
+            return Matrix(inv_data)
+        raise NotImplementedError("Inversion is currently only implemented for 2x2 matrices.")
 
-        
+    def solve(self, v: list[float]) -> list[float]:
+        """Solves the linear system A*x = v for x by applying x = A^-1 * v."""
+        if len(v) != self.cols:
+            raise ValueError(f"Vector dimension ({len(v)}) must match matrix columns ({self.cols}).")
+
+        inv_matrix = self.inverse()
+
+        # Matrix-vector multiplication: x = A^-1 * v
+        x = [
+            sum(inv_matrix.data[i][j] * v[j] for j in range(inv_matrix.cols))
+            for i in range(inv_matrix.rows)
+        ]
+        return x
+
+    @property
+    def rank(self) -> int:
+        """Returns the dimension of the column space (Rank)."""
+        if self.is_singular:
+            return self.rows
+
+        # Check if all elements are zero (Rank 0)
+        all_zero = all(abs(val) < 1e-9 for row in self.data for val in row)
+        if all_zero:
+            return 0
+
+        # For a 2x2 singular non-zero matrix, rank is always 1
+        return 1
+    
+    @property
+    def null_space_basis(self) -> list[list[float]]:
+        """Finds the basis vector(s) spanning the null space (kernel)."""
+        # Full rank: Only the zero vector lands at origin
+        if not self.is_singular:
+            return [[0.0] * self.cols]
+
+        # Rank 0 (Zero matrix): All standard basis vectors are in the null space
+        if self.rank == 0:
+            return [[1.0 if i == j else 0.0 for j in range(self.cols)] for i in range(self.cols)]
+
+        # Rank 1 (2x2): Extract non-trivial kernel direction [-b, a] or [-d, c]
+        if self.rows == 2:
+            a, b = self.data[0][0], self.data[0][1]
+            c, d = self.data[1][0], self.data[1][1]
+
+            vec = [-b, a] if (abs(a) > 1e-9 or abs(b) > 1e-9) else [-d, c]
+
+            # Normalize the basis vector to unit length
+            norm = (vec[0] ** 2 + vec[1] ** 2) ** 5
+            if norm > 1e-9:
+                vec = [round(vec[0] / norm, 4), round(vec[1]/ norm, 4)]
+
+            return [vec]
+
+        return[]
+
+    def __repr__(self) -> str:
+        """Displaying matrices visually in a neat format when printed."""
+        return f"Matrix({self.data})"
+
+if __name__ == "__main__":
+    # 1. Full Rank Invertible Matrix Test
+    A = Matrix([[2.0, 1.0], [1.0, 3.0]])
+    v = [5.0, 10.0]
+
+    A_inv = A.inverse()
+    x = A.solve(v)
+
+    print("=== Test 1: Full Rank System (A * x = v) ===")
+    print(f"Matrix A          : {A}")
+    print(f"Determinant det(A): {A.det}")
+    print(f"Rank              : {A.rank}")
+    print(f"Inverse A^-1      : {A_inv}")
+    print(f"Target Vector v   : {v}")
+    print(f"Solution Vector x : {x}")
+    print(f"Null Space Basis  : {A.null_space_basis}")
+    print()
+
+    # 2. Singular Matrix Test (Rank Collapse)
+    A_singular = Matrix([[2.0, -2.0], [1.0, -1.0]])
+
+    print("=== Test 2: Singular Matrix (Rank 1 Collapse) ===")
+    print(f"Matrix A          : {A_singular}")
+    print(f"Determinant det(A): {A_singular.det}")
+    print(f"Is Singular?      : {A_singular.is_singular}")
+    print(f"Rank              : {A_singular.rank}")
+    print(f"Null Space Basis  : {A_singular.null_space_basis}")
