@@ -95,4 +95,4 @@ python 07-inverse-matrices-column-null-space/visualization.py
 
 Below is the visualization illustrating how matrix $A$ transforms vector $\mathbf{x}$ into target $\mathbf{v}$ (left) and how the inverse matrix $A^{-1}$ rewinds space to recover $\mathbf{x} = A^{-1} \mathbf{v}$ (right):
 
-![linear_system_invers](assets/linear_system_inverse.png)
+![linear_system_inverse](assets/linear_system_inverse.png)
