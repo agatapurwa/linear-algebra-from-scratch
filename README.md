@@ -24,6 +24,10 @@ This repository intentionally documents a dual-phase software engineering journe
 | **05-three-dimensional-transformations** | 3D basis transformations ($\hat{i}, \hat{j}, \hat{k}$), $3 \times 3$ matrix operations, Y-axis rotation | Procedural | `3d_linear_transformation.png` | ✅ Complete |
 | **06-the-determinant** | Area/volume scaling factor, dimensional collapse ($\det = 0$), orientation flip | OOP (`Matrix` Class) | `determinant_scaling.png` | ✅ Complete |
 | **07-inverse-matrices-column-null-space** | Inverse matrice ($\mathbb{A}^{-1}$), Column space, Null space | OOP (`Matrix` Class) | `linear_system_inverse.png` | ✅ Complete |
+| **08-non-square-matrices** | Cross-dimensional transformations ($\mathbb{R}^n \to \mathbb{R}^m$), rectangular matrix operations | OOP (`Matrix` Class) | `nonsquare_transformation.png` | ✅ Complete |
+| **09-dot-products-and-duality** | Geometric dot products, projection, linear duality | OOP (`Matrix` Class) | *In Progress* | 🔄 In Progress |
+
+---
 
 ---
 
@@ -72,7 +76,17 @@ linear-algebra-from-scratch/
 │   │   └── linear_system_inverse.png
 │   ├── matrix_from_scratch.py
 │   ├── visualization.py
-│   └── README.md                    
+│   └── README.md 
+├── 08-non-square-matrices/
+│   ├── assets/
+│   │   └── nonsquare_transformation.png
+│   ├── matrix_from_scratch.py
+│   ├── visualization.py
+│   └── README.md
+├── 09-dot-products-and-duality/
+│   ├── matrix_from_scratch.py
+│   ├── visualization.py
+│   └── README.md                   
 ├── .gitignore
 └── README.md
 
